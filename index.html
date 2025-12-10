@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cronômetro • Demo</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="top-bar">
+        <div class="brand">RelogioOnline <small>demo</small></div>
+        <div class="top-actions">
+            <button id="themeToggle" title="Tema">◐</button>
+            <button id="settings" title="Config">⚙</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <button class="side-btn" data-view="despertador">
+                    <span class="icon">⏰</span>
+                    <span class="label">Despertador</span>
+                </button>
+
+                <button class="side-btn" data-view="temporizador">
+                    <span class="icon">⏱</span>
+                    <span class="label">Temporizador</span>
+                </button>
+
+                <button class="side-btn active" data-view="cronometro">
+                    <span class="icon">⏲</span>
+                    <span class="label">Cronômetro</span>
+                </button>
+
+                <button class="side-btn" data-view="relogio">
+                    <span class="icon">🕒</span>
+                    <span class="label">Relógio</span>
+                </button>
+            </nav>
+        </aside>
+
+        <main class="main-area">
+            <section class="panel" id="cronometro">
+                <div class="panel-inner">
+                    <div class="timer-display" id="display">00:00:00.00</div>
+                    <div class="buttons">
+                        <button id="lapBtn" class="btn small hidden">Volta</button>
+                        <button id="resetBtn" class="btn reset">Redefinir</button>
+                        <button id="startBtn" class="btn start">Iniciar</button>
+                    </div>
+                    <div id="laps" class="laps"></div>
+                </div>
+            </section>
+
+            <section class="panel hidden" id="temporizador">
+                <div class="panel-inner">
+                    <div class="subtitle">Temporizador (countdown)</div>
+                    <div class="countdown-setup">
+                        <input id="cdHours" type="number" min="0" placeholder="hh" /> :
+                        <input id="cdMinutes" type="number" min="0" max="59" placeholder="mm" /> :
+                        <input id="cdSeconds" type="number" min="0" max="59" placeholder="ss" />
+                    </div>
+                    <div class="timer-display small" id="cdDisplay">00:00:00</div>
+                    <div class="buttons">
+                        <button id="cdReset" class="btn reset">Redefinir</button>
+                        <button id="cdStart" class="btn start">Iniciar</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel hidden" id="despertador">
+                <div class="panel-inner">
+                    <div class="subtitle">Despertador</div>
+                    <div class="alarm-setup">
+                        <input id="alarmTime" type="time" />
+                        <label>
+                            <input id="alarmToggle" type="checkbox" />
+                            Habilitar
+                        </label>
+                    </div>
+                    <div class="alarm-status" id="alarmStatus">Nenhum alarme ativo</div>
+                    <div class="buttons">
+                        <button id="alarmClear" class="btn reset">Desligar</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel hidden" id="relogio">
+                <div class="panel-inner">
+                    <div class="subtitle">Relógio local</div>
+                    <div class="clock-display" id="clockLocal">--:--:--</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

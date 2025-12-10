@@ -1,0 +1,153 @@
+/* Reset mínimo */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root{
+    --blue:#0083d3;
+    --sidebar:#3d3d3d;
+    --panel-bg:#ffffff;
+    --muted:#777;
+    --accent-green:#3a9d5c;
+    --accent-orange:#e6951a;
+}
+
+body, html {
+    height: 100%;
+    font-family: Inter, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: #f2f2f2;
+    color: #222;
+}
+
+/* topo */
+.top-bar{
+    height:65px;
+    background: var(--blue);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 0 22px;
+    color: #fff;
+}
+.top-bar .brand{ font-weight:700; font-size:20px; }
+.top-bar .brand small{ font-weight:400; margin-left:8px; font-size:12px; opacity:.9; }
+.top-actions button{ background:transparent; border:none; color:#fff; font-size:16px; margin-left:8px; cursor:pointer; }
+
+/* layout */
+.container{
+    display:flex;
+    height: calc(100vh - 65px);
+    overflow: hidden;
+}
+
+/* sidebar */
+.sidebar{
+    width:84px;
+    background: var(--sidebar);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:18px;
+}
+.sidebar nav{ width:100%; }
+.side-btn{
+    width:100%;
+    background:transparent;
+    border:none;
+    color:#ddd;
+    padding:18px 6px;
+    text-align:center;
+    display:flex;
+    gap:8px;
+    flex-direction:column;
+    align-items:center;
+    cursor:pointer;
+    transition: background .15s;
+}
+.side-btn:hover{ background: rgba(255,255,255,0.03); color:#fff; }
+.side-btn .icon{ font-size:20px; display:block; margin-bottom:6px; }
+.side-btn .label{ font-size:12px; opacity:.9; }
+.side-btn.active{ background: #e6e6e6; color:#222; justify-content:center; }
+
+/* main area */
+.main-area{
+    flex:1;
+    overflow:auto;
+    padding: 28px;
+}
+.panel{
+    background: var(--panel-bg);
+    min-height: calc(100vh - 120px);
+    border-radius:2px;
+    padding: 48px 36px;
+    box-shadow: 0 0 0 8px #efefef inset;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.panel-inner{ width:100%; text-align:center; }
+
+/* display do cronometro */
+.timer-display{
+    font-family: 'Digital-7', monospace;
+    font-size:120px;
+    color:#585858;
+    letter-spacing:6px;
+    margin-bottom:26px;
+    line-height:1;
+}
+.timer-display.small{ font-size:56px; }
+
+/* botões */
+.buttons{ display:flex; gap:12px; justify-content:center; align-items:center; margin-top:6px; }
+.btn{
+    padding:10px 20px;
+    border-radius:4px;
+    border:none;
+    cursor:pointer;
+    color:#fff;
+    font-weight:600;
+    transition: transform .08s;
+}
+.btn:active{ transform: translateY(1px); }
+.small{ padding:6px 10px; font-size:14px; border-radius:3px; }
+
+.start{ background: var(--accent-green); }
+.start:hover{ filter:brightness(.95); }
+.reset{ background: var(--accent-orange); }
+.reset:hover{ filter:brightness(.95); }
+
+/* laps */
+.laps{ margin-top:18px; max-width:600px; margin-left:auto; margin-right:auto; text-align:left; color:var(--muted); }
+
+/* temporizador & despertador */
+.subtitle{ font-size:18px; color:var(--muted); margin-bottom:12px; }
+.countdown-setup input,
+.alarm-setup input[type="time"]{
+    width:70px;
+    padding:8px;
+    font-size:16px;
+    text-align:center;
+    margin: 0 6px;
+    border-radius:4px;
+    border:1px solid #ddd;
+}
+.alarm-setup{ display:flex; gap:12px; align-items:center; justify-content:center; margin-bottom:14px; }
+.alarm-status{ color:var(--muted); margin-bottom:12px; }
+.clock-display{ font-size:40px; color:#333; }
+
+/* helpers */
+.hidden{ display:none !important; }
+
+/* digital font fallback */
+@font-face {
+    font-family: 'Digital-7';
+    src: url('https://fonts.cdnfonts.com/s/17596/digital-7.woff') format('woff');
+    font-display:swap;
+}
+
+/* responsivo */
+@media (max-width:800px){
+    .sidebar{ display:none; }
+    .timer-display{ font-size:64px; }
+    .panel{ padding:28px 16px; }
+}
